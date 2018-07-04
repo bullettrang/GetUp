@@ -1,0 +1,21 @@
+{
+  "name": "Stand Up and Move",
+  "description": "Demonstrates usage and features of the event page by reminding user to get up and move",
+  "version": "1.0",
+  "manifest_version": 2,
+  "permissions": ["alarms", "notifications", "storage"],  
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_title": "Stand up and move!",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "get_up16.png",
+    "32": "get_up32.png",
+    "48": "get_up48.png",
+    "128": "get_up128.png"
+  }
+}
