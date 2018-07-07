@@ -1,7 +1,10 @@
 
 'use strict';
 
+//how do i mark the button as selected after a click?
+
 function setAlarm(event) {
+    
   //grab the minute selected from toolbar
   let minutes = parseFloat(event.target.value);
   chrome.browserAction.setBadgeText({text: 'ON'});
@@ -9,30 +12,15 @@ function setAlarm(event) {
   chrome.alarms.create({delayInMinutes: minutes,periodInMinutes: minutes});
   chrome.storage.sync.set({minutes: minutes});
 
-
-  window.close();
-}
-
-function startTimer(duration, display) {
-  var timer = duration, minutes, seconds;
-  setInterval(function () {
-      minutes = parseInt(timer / 60, 10);
-      seconds = parseInt(timer % 60, 10);
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      display.text(minutes + ":" + seconds);
-
-      if (--timer < 0) {
-          timer = duration;
-      }
-  }, 1000);
+ window.close();
 }
 
 
 
-//upon clicking clear alarm in tool bar menu
+
+
+
+//upon clicking 'clear alarm' in tool bar menu
 //deletes the entire alarm
 //closes window after
 function clearAlarm() {
@@ -50,3 +38,24 @@ document.getElementById('30min').addEventListener('click', setAlarm);
 document.getElementById('45min').addEventListener('click', setAlarm);
 document.getElementById('60min').addEventListener('click', setAlarm);
 document.getElementById('cancelAlarm').addEventListener('click', clearAlarm);
+
+var btns = ["1min","15min","30min","45min","60min","cancelAlarm"];
+
+
+//when doc is ready, go to chrome.storage.sync
+//mark the option that is already selected
+$(document).ready(function(){
+  chrome.storage.sync.get("minutes",function(obj){
+    console.log(obj.minutes);
+    $("#"+obj.minutes+"min").css('background-color',"purple");
+  })
+})
+
+
+
+
+
+//one an option is clicked
+//display countdown timer
+//once it count downs to 0
+//display notification prompt

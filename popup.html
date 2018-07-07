@@ -1,10 +1,10 @@
-<!-- Copyright 2017 The Chromium Authors. All rights reserved.
-Use of this source code is governed by a BSD-style license that can be
-found in the LICENSE file. -->
+
+<!--FIND a way to display countdown time-->
 <html>
   <head>
     <title>Stand Up and Popup</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/popup.css">
     <style>
       body {
         text-align: center;
@@ -20,12 +20,14 @@ found in the LICENSE file. -->
         outline: none;
       }
 
-      button:active {
-        outline: #80DEEA dotted thick;
-      }
+
       #GetUpImg{
         width: 100px;
         margin: 5px;
+      }
+      .selected{
+        background-color: green;
+        color: white;
       }
     </style>
     <!--
@@ -42,17 +44,21 @@ found in the LICENSE file. -->
       <!-- An Alarm delay of less than the minimum 1 minute will fire
       in approximately 1 minute incriments if released -->
       <span id="timerDisplay"></span>
-      <button class="btn btn-primary btn-sm "data-toggle="button" aria-pressed="false"id='sampleSecond' value='0.1'>Sample Second</button>
-      <button class="btn btn-primary btn-sm" data-toggle="button"aria-pressed="false"id='1min' value='1'>1 Minutes</button>
-      <button class="btn btn-primary btn-sm" data-toggle="button"aria-pressed="false"id='15min' value='15'>15 Minutes</button>
-      <button class="btn btn-primary btn-sm" data-toggle="button"aria-pressed="false"id='30min' value='30'>30 Minutes</button>
-      <button class="btn btn-primary btn-sm" data-toggle="button"aria-pressed="false"id='45min' value='45'>45 Minutes</button>
-      <button class="btn btn-primary btn-sm" data-toggle="button" aria-pressed="false"id='60min' value='60'>60 Minutes</button>
-      <button class="btn btn-primary btn-sm"  data-toggle="button" aria-pressed="false"id='cancelAlarm'>Cancel Alarm</button>
+      <div id="thebuttons">
+      <button class="btn btn-primary btn-sm js-click"data-toggle="button" aria-pressed="false"id='sampleSecond' value='0.1'>Sample Second</button>
+      <button class="btn btn-primary btn-sm js-click" data-toggle="button"aria-pressed="false"id='1min' value='1'>1 Minutes</button>
+      <button class="btn btn-primary btn-sm js-click" data-toggle="button"aria-pressed="false"id='15min' value='15'>15 Minutes</button>
+      <button class="btn btn-primary btn-sm js-click" data-toggle="button"aria-pressed="false"id='30min' value='30'>30 Minutes</button>
+      <button class="btn btn-primary btn-sm js-click" data-toggle="button"aria-pressed="false"id='45min' value='45'>45 Minutes</button>
+      <button class="btn btn-primary btn-sm js-click" data-toggle="button" aria-pressed="false"id='60min' value='60'>60 Minutes</button>
+      <button class="btn btn-primary btn-sm js-click"  data-toggle="button" aria-pressed="false"id='cancelAlarm'>Cancel Alarm</button>
+    </div>
    <!-- link to non-persistent background script -->
-   <script src="popup.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-   <script src="background.js"></script>
    <script src="jquery-3.3.1.min.js"></script>
+   <script src="popup.js"></script>
+ 
+   <script src="background.js"></script>
+  
+  
   </body>
 </html>
